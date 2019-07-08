@@ -1,0 +1,88 @@
+{% extends 'shop/master_layout.html' %}
+
+{% block title %} CheckOut {% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% load static %}
+{% block body %}
+
+    <script>
+
+        localStorage.setItem("ttl",0);
+    </script>
+
+    <div>
+        {% for i in list %}
+
+            <div STYLE="max-width: 80%; margin-left: 10%;margin-right: 10%; background: aliceblue">
+                <span STYLE="margin-left: 1%;" class="row">
+                    <span class="col-md-4">Product ID: &nbsp; </span> <b class="col-md-8">{{ i.0 }}</b>
+                </span><br/>
+                <span STYLE="margin-left: 1%;" class="row">
+                    <span class="col-md-4">Category: &nbsp; </span> <b class="col-md-8">{{ i.7 }}</b>
+                </span><br/>
+                <span STYLE="margin-left: 1%;" class="row">
+                    <span class="col-md-4">Name: &nbsp; </span> <b class="col-md-8">{{ i.1 }}</b>
+                </span><br/>
+                <span STYLE="margin-left: 1%;" class="row">
+                    <span class="col-md-4">Supplier: &nbsp; </span> <b class="col-md-8">{{ i.4 }}</b>
+                </span><br/>
+                <span STYLE="margin-left: 1%;" class="row">
+                    <span class="col-md-4"> Stock: &nbsp; </span> <b class="col-md-8">{{ i.3 }}</b>
+                </span><br/>
+                <span STYLE="margin-left: 1%;" class="row">
+                    <span class="col-md-4">Price: &nbsp; </span> <b  class="col-md-8">{{ i.5 }} $</b>
+                    <script>
+                        ttl=Number(localStorage.getItem('ttl'));
+                        ttl=ttl+{{ i.5 }};
+                        localStorage.setItem('ttl',ttl);
+                    </script>
+                </span>
+            </div>
+            <br>
+
+        {% endfor %}
+    </div>
+
+    <div style="max-width: 80%; margin-right: 10%; margin-left: 10%; background: bisque; " >
+        <span style="margin: 2%; font-size: 23px"> <i style="font-size: 18px; text-align:center; ">Total Amount to Pay :</i> <b><span style="margin-left: 5%;" name="total_amount" id="total_amount"> <script>document.getElementById('total_amount').innerHTML=localStorage.getItem('ttl');</script> </span></b> $ </span> <span> <button style="font-size: 20px; float: right; margin: 1%;" type="submit" class="btn-primary" onclick="checkout_now();"> <b>CheckOut</b> </button> </span>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    function checkout_now(){
+
+         if(localStorage.getItem('ttl')<=0){
+             alert("Buy Something First!");
+         }
+         else {
+             var pathname = window.location.pathname;
+
+             if (pathname == "/shop/") {
+                 var newpath = "shop/payment/";
+                 window.location = newpath;
+             } else {
+                 var newpath = "../payment/";
+                 window.location = newpath;
+             }
+         }
+    }
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+{% extends 'shop/master_layout.html' %}
+
+
+
+{% block title %} Pay{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% load static %}
+{% block body %}
+    <script>
+
+        alert({{ ttl }}+'$ payed!');
+        document.getElementById('cart_nums').innerHTML='0';
+        localStorage.clear();
+        var newurl="/shop/";
+        window.location=newurl;
+    </script>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

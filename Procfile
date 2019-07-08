@@ -1,0 +1,1 @@
+web: gunicorn E_Commerce_WebSite.wsgi

@@ -1,0 +1,40 @@
+{% extends 'shop/master_layout.html' %}
+
+{% block title %} Product {% endblock %}
+
+{% block css %}
+{% endblock %}
+
+
+{% load static %}
+{% block body %}
+
+    <div style="text-align: center; background-color: darkgray">
+
+        <div class="ml-auto mr-auto"> <h1> <span  style="background-color:beige; color:black">Category:</span> <span>{{ list.7 }}</span> </h1> </div>
+        <br>
+        <div class="mr-auto ml-auto"> <img style="height: 200px; width: 400px;" src="{{ list.6 }}"> </div>
+        <br><br>
+        <div class="mr-auto ml-auto"> <p> <span  style="background-color:beige; color:black"> ID </span> : <b><u><i  style="background-color:bisque; color:black">{{ list.0 }}</i></u></b> </p> </div>
+        <br>
+        <div class="mr-auto ml-auto"> <h3> <span style="background-color:beige; color:black"> NAME </span> : <b><u><i  style="background-color:bisque; color:black">{{ list.1 }}</i></u></b> </h3> </div>
+        <br>
+        <div class="mr-auto ml-auto"> <h6> <span  style="background-color:beige; color:black;"> Description : </span> </h6> <h5><b><u><i  style="background-color:bisque; color:black">{{ list.2 }}</i></u></b></h5> </div>
+        <br>
+        <div class="mr-auto ml-auto"> <h2> <span style="background-color:beige; color:black"> Price </span> : <b><u><i style="background-color:bisque; color:black">{{ list.5 }} $</i></u></b> </h2></div>
+        <br>
+        <div class="ml-auto mr-auto"> <h5> <span style="background-color:beige; color:black"> Products in Stock </span> : <b><u><i style="background-color:bisque; color:black">{{ list.3 }}</i></u></b> </h5> </div>
+        <br>
+        <div class="ml-auto mr-auto"> <h5> <span style="background-color:beige; color:black"> Supplier </span> : <b><u><i style="background-color:bisque; color:black">{{ list.4 }}</i></u></b> </h5> </div>
+        <br>
+        <br>
+        <div style="color:black" class="ml-auto mr-auto"> <span><button onclick="whenCartClicked({{ list.0 }})" class="btn btn-primary">Add To CART</button></span></div>
+        <br>
+    </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends 'shop/master_layout.html' %}
+
+{% block title %} E_Commerce_Website {% endblock %}
+
+{% block css %}
+{% endblock %}
+
+
+{% load static %}
+{% block body %}
+    <div>
+    {% for key,val in lists %}
+        <div style="text-align: center; background-color: white; border: 2px solid ; border-radius: 5px; margin-left: 10px; margin-right: 10px"><h1 style=" color: red;">&nbsp;<u><b>{{ key }}</b></u></h1></div>
+        <div class="row" style="margin-right: 10px; margin-left: 10px; border: 2px solid; border-radius: 5px; background-color: white" >
+        {% for i in val %}
+            <div class="col-md-2" style="margin: 10px; width: 18rem;">
+                <div style="border: 1.5px solid blue; border-radius: 5px; width: 225px; height: 350px; background-color: lightskyblue" class="card-body" >
+                    <div style="text-align: center; margin-bottom: 5px"><img style="width: 100px; height: 100px;" src="{{ i.6 }}" class="card-img-top" alt="{% static 'shop/test.jpg' %}"></div>
+                    <h5 style=" text-align: center;" class="card-title">{{ i.1 }}</h5>
+                    <h6 style=" text-align: center;" class="card-subtitle mb-2 text-muted">Price: &nbsp; {{ i.5 }} $</h6>
+                    <div style=""><textarea readonly style="resize: vertical; text-align: center; width: 175px; height: 75px;" class="card-text">{{ i.2 }}</textarea></div>
+                    <div style=" text-align: center; margin-top: 5px;">
+                        <span><button onclick="whenCartClicked({{ i.0 }})" class="btn btn-primary">Add To CART</button></span> <br>
+                        <span><a href="shop/product/{{ i.7 }},{{ i.0 }}" class="mr-auto ml-auto mt-auto mb-auto" onmouseout="changecursor2()" onmouseover="changecursor1()" style="color: black"><b><u>Product View</u></b></a></span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <br><br>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

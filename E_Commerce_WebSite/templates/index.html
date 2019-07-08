@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 550px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<br><br>
+
+{% load static %}
+<div class="row">
+  <div id="a" class="column" style=" background-image: url(../static/shop_img.jpg)" onmouseover="a1();" onmouseout="a2();" onclick="a();">
+    <h1 style="margin-right: 38%; margin-left: 38%; color: black; background-color: azure">Go To Shop</h1>
+  </div>
+  <div id="b" class="column" style=" background-image: url(../static/blog_img.jpg)" onmouseover="b1();" onmouseout="b2();" onclick="b();">
+    <h1 style="margin-right: 38%; margin-left: 38%; color: black; background-color: azure">Go To Blog</h1>
+  </div>
+</div>
+
+<br><br>
+
+<h4 style="float: right; margin-right: 1%">Developed by Mujahid</h4>
+
+</body>
+
+<script>
+
+    function changecursor1() {
+        document.body.style.cursor = 'pointer';
+    }
+
+    function changecursor2() {
+        document.body.style.cursor = 'default';
+    }
+
+    function a1() {
+        //alert("a1");
+        changecursor1();
+        document.getElementById("a").style="background-image: url(../static/shop_img.jpg); border: 10px solid white; border-radius: 5px;";
+    }
+    function a2() {
+        //alert("a2");
+        changecursor2();
+        document.getElementById("a").style="background-image: url(../static/shop_img.jpg);";
+    }
+    function b1() {
+        //alert("b1");
+        changecursor1();
+        document.getElementById("b").style="background-image: url(../static/blog_img.jpg); border: 10px solid white; border-radius: 5px;";
+    }
+    function b2() {
+        //alert("b2");
+        changecursor2();
+        document.getElementById("b").style="background-image: url(../static/blog_img.jpg);";
+
+    }
+
+    function a() {
+        window.location="/shop";
+    }
+
+    function b() {
+        window.location="/blog";
+    }
+
+</script>
+
+</html>

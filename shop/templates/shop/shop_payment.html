@@ -1,0 +1,264 @@
+{% extends 'shop/master_layout.html' %}
+
+{% block title %} Payment {% endblock %}
+
+{% block css %}
+{% endblock %}
+
+
+{% load static %}
+
+
+{% block body %}
+
+    <div class="container" style="background: azure">
+        <div class="col my-4">
+            <h2 style="margin-top: 2%;margin-left: 30%;margin-bottom: 2%"><u>Enter Address & Other Details:</u></h2>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputname">Name</label>
+                        <input type="name" class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Country</label>
+                    <input type="text" class="form-control" id="country" placeholder="Country">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="city" placeholder="City">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <input type="text" class="form-control" id="state" placeholder="Enter State">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="zip">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputZip">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="+923304009190">
+                </div>
+                <button style="margin-bottom: 2%;font-size: 30px;width: 100%" type="button" onclick="pay1();" class="btn btn-primary">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+     function pay1(){
+
+        var _name=document.getElementById('name');
+        var _country=document.getElementById('country');
+        var _address=document.getElementById('address');
+        var _city=document.getElementById('city');
+        var _state=document.getElementById('state');
+        var _zip=document.getElementById('zip');
+        var _phone=document.getElementById('phone');
+        var _email=document.getElementById('email');
+
+        _name=_name.value.toString();
+        _country=_country.value.toString();
+        _address=_address.value.toString();
+        _city=_city.value.toString();
+        _state=_state.value.toString();
+        _zip=_zip.value.toString();
+        _phone=_phone.value.toString();
+        _email=_email.value.toString();
+
+        var name=_name.trim();
+        var email=_email.trim();
+        var address=_address.trim();
+        var country=_country.trim();
+        var city=_city.trim();
+        var state=_state.trim();
+        var zip=_zip.trim();
+        var phone=_phone.trim();
+
+        var ttl=localStorage.getItem('ttl');
+
+        var data=[name,email,address,country,city,state,zip,phone,ttl];
+        var url="../pay/";
+
+        if(name=="" || email=="" || address=="" || country=="" || city=="" || state=="" || zip=="" || phone==""){
+            alert('Please Fill All the fields correctly !')
+        }else{
+            var r=confirm("Confirm Payment to credentials:\n"+"\nTo pay: "+ttl+" $\n\n"+name+"\n"+email+"\n"+address+"\n"+country+"\n"+city+"\n"+state+"\n"+zip+"\n"+phone);
+            if (r == true) {
+
+
+                var form = document.createElement('form');
+                document.body.appendChild(form);
+                form.method = 'get';
+                form.action = url;
+
+                var i=1;
+                for (var name in data) {
+                    var n="";
+                    var t="";
+                    if(i==1){
+                        n="name";
+                        t="text";
+                    }
+                    else if(i==2){
+                        n="email";
+                        t="text";
+                    }
+                    else if(i==3){
+                        n="address";
+                        t="text";
+                    }
+                    else if(i==4){
+                        n="country";
+                        t="text";
+                    }
+                    else if(i==5){
+                        n="city";
+                        t="text";
+                    }
+                    else if(i==6){
+                        n="state";
+                        t="text";
+                    }
+                    else if(i==7){
+                        n="zip";
+                        t="text";
+                    }
+                    else if(i==8){
+                        n="phone";
+                        t="text";
+                    }
+                    else if(i==9){
+                        n="ttl";
+                        t="text";
+                    }
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = n;
+                    input.id = n;
+                    input.value = data[name];
+                    form.appendChild(input);
+                    i++;
+                }
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'items';
+                input.id = 'items';
+                input.value = localStorage.getItem('the_cart_numbers');
+                form.appendChild(input);
+                form.submit();
+                i=1;
+
+
+
+            } else {
+                alert('Payment Canceled!\nTry Again!')
+            }
+        }
+    }
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

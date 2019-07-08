@@ -1,0 +1,102 @@
+{% extends 'shop/master_layout.html' %}
+
+{% block title %} Cart {% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% load static %}
+{% block body %}
+
+    <div style="margin-left: 40px;margin-right: 40px;margin-bottom: 25px;"> <button style="font-size: 30px;" type="submit" class=" col-md-12 btn btn-primary" onclick="checking_out()"> <b>CheckOut</b> </button> </div>
+
+    <div>
+        {% for i in list %}
+            <div class="card mb-3" style="margin: 20px;">
+                <div class="card-header" style="text-align: center">
+                    <span>Product ID : &nbsp; <b>{{ i.0 }}</b></span> <span style="float: right"><button id="{{ i.0 }}"
+                                                                                                         name="{{ i.0 }}"
+                                                                                                         style="text-align: center;"
+                                                                                                         type="button"
+                                                                                                         class="btn btn-danger"
+                                                                                                         onclick="remove_prod_cart(id);">X</button></span>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-md-3">
+                        <img style="max-height: 250px; max-width: 250px; margin: 10px" src="{{ i.6 }}" class="card-img"
+                             alt="{% static 'shop/test.jpg' %}">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h4 class="card-title"> Name: &nbsp; <b>{{ i.1 }}</b></h4>
+                            <p class="card-text"> Category: &nbsp; <b>{{ i.7 }}</b></p>
+                            <p class="card-text"> Description: &nbsp; <b>{{ i.2 }}</b></p>
+                            <p class="card-text"> Supplier: &nbsp; <b>{{ i.4 }}</b></p>
+                            <p class="card-text"> Stock: &nbsp; <b>{{ i.3 }}</b></p>
+                            <p class="card-text"> Price: &nbsp; <b>{{ i.5 }} $</b></p>
+                            <p class="card-text"> Quantity &nbsp; <input style="max-height: 50px; text-align: center; max-width: 50px;" type="number" placeholder="1" min="1" max="1000"></p>
+                            <button type="button" class=" col-md-12 btn btn-success" onclick="purchase_now('{{ i.0 }}~M~{{ i.6 }}~M~{{ i.1 }}~M~{{ i.7 }}~M~{{ i.2 }}~M~{{ i.4 }}~M~{{ i.3 }}~M~{{ i.5 }}'); " >
+                                Purchase Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+
+
+{% block scripts %}
+
+ function purchase_now(itm) {
+
+        var item = itm.split("~M~");
+
+        var newpath = "shop/checkout/" + item;
+        window.location = newpath;
+
+        var pathname = window.location.pathname;
+        if (pathname == "/shop/") {
+        var newpath = "shop/checkout/" + item[0];
+        window.location = newpath;
+        } else {
+            var newpath = "../checkout/" + item[0];
+            window.location = newpath;
+        }
+
+    }
+
+    function remove_prod_cart(id){
+
+        var retVal = confirm("Do you really want to remove Item("+id+") ?");
+        if( retVal == true )
+        {
+
+            ls=localStorage.getItem('the_cart_numbers');
+            var arr=[];
+            var final_arr=[];
+            arr=ls.split(",");
+            for(var i=0; i < arr.length; i++)
+                if(arr[i]==id)
+                    id=id;
+                else
+                    final_arr.push(arr[i])
+            localStorage.setItem('the_cart_numbers',final_arr);
+            if(localStorage.getItem('the_cart_numbers')!="")
+                var pathname = "../cart/"+localStorage.getItem('the_cart_numbers');
+            else
+                var pathname = /shop/;
+            window.location = pathname;
+
+        }
+        else {
+                alert("Item("+id+") not removed");
+            }
+
+
+    }
+
+{% endblock %}

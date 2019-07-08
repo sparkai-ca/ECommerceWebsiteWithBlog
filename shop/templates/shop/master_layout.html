@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- jquery -->
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- [/] jquery -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title> {% block title %}  {% endblock %} </title>
+
+    <style> {% block css %}  {% endblock %} </style>
+
+</head>
+
+<body onload="loading_function();" style="background-color: black">
+<nav>
+    {% load static %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <p class="navbar-brand mr-auto mt-auto mb-auto" STYLE="color: snow" onmouseout="changecursor2()"
+           onmouseover="changecursor1()" onclick="to_shop()">E_Commerce_WebSite</p>
+
+        <p class="mr-auto mt-auto mb-auto" onmouseout="changecursor2()" onmouseover="changecursor1()"
+           onclick="to_home()" style="color: dodgerblue"> Home </p>
+        <p class="mr-auto mt-auto mb-auto" onmouseout="changecursor2()" onmouseover="changecursor1()"
+           onclick="to_aboutus()" style="color: dodgerblue"> About Us </p>
+        <p class="mr-auto mt-auto mb-auto" onmouseout="changecursor2()" onmouseover="changecursor1()"
+           onclick="to_contactus()" style="color: dodgerblue"> Contact Us </p>
+        <p class="mr-auto mt-auto mb-auto" onmouseout="changecursor2()" onmouseover="changecursor1()"
+           onclick="to_tracker()" style="color: dodgerblue"> Track </p>
+
+        <form class="form-inline my-2 my-lg-0 mr-auto ml-auto mt-auto mb-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <button style="margin-right:1%;" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="checking_out()">
+            CheckOut
+        </button>
+
+        <i><b><a name="_cart_"
+                 style="border: 2px solid ; border-radius: 5px;background: lawngreen; color: black; margin-right:10px;"
+                 class="nav-link ml-auto mt-auto mb-auto" onmouseout="changecursor2()" onmouseover="changecursor1()"
+                 onclick="to_cart()">Cart(<span id="cart_nums">  </span>)</a></b></i>
+        <button onclick="emptyCart();" type="button" class="btn btn-danger"> Empty Cart </button>
+    </nav>
+
+    <br>
+    {% block body %}  {% endblock %}
+    <br>
+
+    <!-- Footer -->
+    <footer class="col-md-12" style="background-color: #343a40  ">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+            <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: white">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Very long link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Very long link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Very long link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Very long link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none">
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: white">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none">
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: white">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none">
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: white">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+        <!-- Footer Links -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3" style="color: white">© 2019 Copyright:
+            &nbsp;&nbsp;&nbsp;<span class="mr-auto mt-auto mb-auto" onmouseout="changecursor2()"
+                                    onmouseover="changecursor1()" onclick="to_home()" style="color: dodgerblue"> E_Commerce_WebSite </span>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</nav>
+</body>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+<script>
+
+    function to_home() {
+        //window.location.replace('/shop/');
+        var newURL = "/";
+        window.location = newURL;
+    }
+
+    function to_shop() {
+        //window.location.replace('/shop/');
+        var newURL = "/shop";
+        window.location = newURL;
+    }
+
+    function to_aboutus() {
+
+        var pathname = window.location.pathname;
+
+        if (pathname == "/shop/") {
+            var newURL = "shop/aboutus/";
+            window.location = newURL;
+        } else {
+            var newURL = "../aboutus/";
+            window.location = newURL;
+        }
+    }
+
+    function to_contactus() {
+
+        var pathname = window.location.pathname;
+
+        if (pathname == "/shop/") {
+            var newURL = "shop/contactus/";
+            window.location = newURL;
+        } else {
+            var newURL = "../contactus/";
+            window.location = newURL;
+        }
+
+    }
+
+    function to_tracker() {
+
+        var pathname = window.location.pathname;
+
+        if (pathname == "/shop/") {
+            var newURL = "shop/tracker/";
+            window.location = newURL;
+        } else {
+            var newURL = "../tracker/";
+            window.location = newURL;
+        }
+
+    }
+
+    function to_cart() {
+        var ls = localStorage.getItem("the_cart_numbers");
+
+        var ls_len=0;
+
+        try{
+            ls_len=ls.length;
+        }catch (e) {
+
+        }
+
+        if (ls_len <= 0) {
+            alert("Cart is Empty \nAdd something first!");
+        } else {
+
+            var arr = [];
+            if (ls != null) {
+                var i = 0;
+                while (i < ls_len) {
+                    if (ls[i] != "," && ls[i] != undefined && ls[i] != null && (ls[i] >= 0 && ls[i] <= 9)) {
+                        dummy = ls[i];
+                        i = i + 1;
+                        if (ls[i] != "," && ls != undefined && ls != null && (ls[i] >= 0 && ls[i] <= 9)) {
+                            arr.push(dummy + '' + ls[i]);
+                            i = i + 1
+                        } else {
+                            arr.push(dummy);
+                        }
+                    } else {
+                        //alert(ls[i]);
+                        i = i + 1;
+                    }
+                }
+                var pathname = window.location.pathname;
+
+                if (pathname == "/shop/") {
+                    var newURL = "shop/cart/" + arr;
+                    window.location = newURL;
+                } else {
+                    var newURL = "../cart/";
+                    window.location = newURL + arr;
+                }
+
+                //alert(localStorage.getItem('the_cart_numbers'));
+
+            }
+        }
+    }
+
+    function checking_out()
+    {
+        var ls_len=0;
+
+        try {
+            ls_len=localStorage.getItem('the_cart_numbers').length;
+        }catch (e) {
+
+        }
+
+         if(ls_len<=0){
+             alert("Cart is Empty \nAdd something first!");
+         }
+         else {
+             var pathname = window.location.pathname;
+
+             if (pathname == "/shop/") {
+                 var newpath = "shop/checkout/" + localStorage.getItem('the_cart_numbers');
+                 window.location = newpath;
+             } else {
+                 var newpath = "../checkout/" + localStorage.getItem('the_cart_numbers');
+                 window.location = newpath;
+             }
+         }
+    }
+
+    function changecursor1() {
+        document.body.style.cursor = 'pointer';
+    }
+
+    function changecursor2() {
+        document.body.style.cursor = 'default';
+    }
+
+    function loading_function() {
+
+        var ls=localStorage.getItem('the_cart_numbers');
+
+        var ls_len=0;
+
+        try {
+            ls_len=ls.length;
+        }catch (e) {
+            document.getElementById("cart_nums").innerHTML = "0";
+        }
+
+        if (ls_len > 0) {
+            var j = 0;
+            var i = 0;
+            while (i < ls_len) {
+                if (ls[i] != ",") {
+                    i = i + 1;
+                    if (ls[i] != ",") {
+                        j = j + 1;
+                        i = i + 1;
+                    } else {
+                        j = j + 1;
+                    }
+                } else {
+                    i = i + 1;
+                }
+            }
+
+            document.getElementById("cart_nums").innerHTML = j;
+        } else
+            document.getElementById("cart_nums").innerHTML = "0";
+
+    }
+
+    function emptyCart() {
+
+        var ls_len=0;
+
+        try {
+            ls_len=localStorage.getItem('the_cart_numbers').length;
+        }catch (e) {
+
+        }
+
+        if(ls_len>0) {
+            alert("Items in Cart -->   "+localStorage.getItem('the_cart_numbers'));
+            r=confirm("Really Want LocalStorage Empty ?");
+            if(r)
+            {
+                localStorage.setItem('session', "");
+                localStorage.setItem('the_cart_numbers', "");
+                document.getElementById("cart_nums").innerHTML = "0";
+            }
+            var newURL = "/shop/";
+            window.location = newURL;
+        }
+        else{
+            alert('cart already empty !');
+        }
+
+    }
+
+    function whenCartClicked(s) {
+        var arr = [];
+        ls = localStorage.getItem('session');
+        var ls_len=0;
+        try {
+            ls_len=ls.length;
+        }catch (e) {
+
+        }
+
+        if (ls != null) {
+            var i = 0;
+            while (i <= ls_len) {
+                if (ls[i] != "," && ls[i] != undefined && ls[i] != null && (ls[i] >= 0 && ls[i] <= 9)) {
+                    dummy = ls[i];
+                    i = i + 1;
+                    if (ls[i] != "," && ls != undefined && ls != null && (ls[i] >= 0 && ls[i] <= 9)) {
+                        arr.push(dummy + '' + ls[i]);
+                        i = i + 1
+                    } else {
+                        arr.push(dummy);
+                    }
+                } else {
+                    //alert(ls[i]);
+                    i = i + 1;
+                }
+            }
+            //alert(arr);
+            localStorage.setItem('the_cart_numbers', arr);
+            localStorage.setItem('session', "");
+            //alert('arr-1:  '+arr);
+        }
+
+        for (a in arr) {
+            if (arr[a] == s) {
+                alert("Item already added to the cart !");
+                return;
+            }
+        }
+        arr.push(s);
+        alert('Items in the CART ->     ' + arr);
+        localStorage.setItem('session', arr);
+        localStorage.setItem('the_cart_numbers', arr);
+
+        //alert(arr);
+
+        document.getElementById("cart_nums").innerHTML = "" + arr.length;
+    }
+
+
+
+</script>
+
+<script> {% block scripts %}  {% endblock %} </script>
+
+</html>
